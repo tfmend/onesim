@@ -1,5 +1,5 @@
 /* 
- * Copyright 2010 Aalto University, ComNet
+ * Copyright 2012 University of São Paulo, São Paulo
  * Released under GPLv3. See LICENSE.txt for details. 
  */
 package routing;
