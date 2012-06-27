@@ -64,7 +64,23 @@ public class EASERouter extends ActiveRouter {
 			return;
 		}
 		
-		tryOtherMessages();		
+		trySendMessages();		
+	}
+	
+	/**
+	 * Tries to send messages
+	 */
+	protected void trySendMessages(){
+		List<Connection> connections = getConnections();
+		if (connections.size() == 0 || this.getNrofMessages() == 0) {
+			return null;
+		}
+
+		List<Message> messages = 
+			new ArrayList<Message>(this.getMessageCollection());
+		this.sortByQueueMode(messages);
+
+		return tryMessagesToConnections(messages, connections);
 	}
 	
 	@Override
