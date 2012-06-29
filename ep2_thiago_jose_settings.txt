@@ -6,7 +6,7 @@
 #         Namespace Scenario settings           #
 #################################################
 
-Scenario.name = ep2_workingDayScenario
+Scenario.name = ep2_thiago_jose
 Scenario.simulateConnections = true
 Scenario.updateInterval = 100
 #Scenario.endTime = 172k
@@ -35,7 +35,7 @@ wifi.transmitRange = 500
 
 
 Group.movementModel = MapBasedMovement
-Group.router = FRESHRouter
+Group.router = ProphetRouter
 Group.bufferSize = 5M
 Group.waitTime = 0, 120
 Group.nrofInterfaces = 1
