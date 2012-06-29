@@ -27,7 +27,7 @@ import core.Settings;
  */
 public class FRESHRouter extends ActiveRouter {
 	
-	private List<Message> fowardMessages = null;
+	private List<Message> forwardMessages = null;
 	private List<Message> removeMessages = null;
 
 	private List<LastEncounter> lastEncounteredHosts;
@@ -42,6 +42,8 @@ public class FRESHRouter extends ActiveRouter {
 	 */
 	public FRESHRouter(Settings s) {
 		super(s);
+		forwardMessages =  new ArrayList<Message>();
+		removeMessages =  new ArrayList<Message>();
 		lastEncounteredHosts = new ArrayList<LastEncounter>();
 	}
 
@@ -51,6 +53,8 @@ public class FRESHRouter extends ActiveRouter {
 	 */
 	protected FRESHRouter(FRESHRouter r) {
 		super(r);
+		forwardMessages =  new ArrayList<Message>();
+		removeMessages =  new ArrayList<Message>();
 		lastEncounteredHosts = new ArrayList<LastEncounter>();
 	}
 
@@ -118,7 +122,7 @@ public class FRESHRouter extends ActiveRouter {
 		
 		//try delivery messages to neighbors
 		this.exchangeDeliverableMessages();
-		fowardMessages.clear();
+		forwardMessages.clear();
 		removeMessages.clear();
 		//for all other messages
 		//if didnt found the destination send message to next hop
@@ -143,14 +147,14 @@ public class FRESHRouter extends ActiveRouter {
 				
 				//add lastEncounterTime property on message
 				message.addProperty(String.valueOf( this.getHost().getAddress() )  , Long.valueOf( time ));
-				fowardMessages.add(message);
+				forwardMessages.add(message);
 				
 			}
 			
 		}
 		
 		/* don't leave a copy for the sender */
-		for ( Message message : fowardMessages ) {
+		for ( Message message : forwardMessages ) {
 			this.deleteMessage(message.getId(), false);
 		}
 		/* don't leave a copy for the sender */
@@ -158,8 +162,8 @@ public class FRESHRouter extends ActiveRouter {
 			this.deleteMessage(message.getId(), false);
 		}
 		
-		//send fowardmessages to all neighbors
-		trySendMessages(fowardMessages, getConnections());
+		//send forwardMessages to all neighbors
+		trySendMessages(forwardMessages, getConnections());
 		
 	}
 	
