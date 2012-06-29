@@ -29,9 +29,10 @@ public class FRESHRouter extends ActiveRouter {
 	
 	private List<Message> fowardMessages = null;
 	private List<Message> removeMessages = null;
-	//circular queue with length 100
-	private LastEncounter[] encounters = null;
-	private static final int MAX_ENCOUNTERS = 100;
+
+	private List<LastEncounter> lastEncounteredHosts;
+	private static final int MAX_TABLE_SIZE = 100;
+	
 	private int counter = 0;
 	
 	/**
@@ -41,9 +42,7 @@ public class FRESHRouter extends ActiveRouter {
 	 */
 	public FRESHRouter(Settings s) {
 		super(s);
-		this.fowardMessages = new ArrayList<Message>();
-		this.removeMessages = new ArrayList<Message>();
-		this.encounters = new LastEncounter[MAX_ENCOUNTERS];
+		lastEncounteredHosts = new ArrayList<LastEncounter>();
 	}
 
 	/**
@@ -52,36 +51,51 @@ public class FRESHRouter extends ActiveRouter {
 	 */
 	protected FRESHRouter(FRESHRouter r) {
 		super(r);
-		//be careful with deepcopy
-		this.fowardMessages = new ArrayList<Message>();
-		this.removeMessages = new ArrayList<Message>();
-		this.encounters = new LastEncounter[MAX_ENCOUNTERS];
+		lastEncounteredHosts = new ArrayList<LastEncounter>();
 	}
 
 	@Override
 	public void changedConnection(Connection con) {
 		if (con.isUp()) {
 			Date now = new Date();
-			long mill = now.getTime();
-			int otherAddress = con.getOtherNode(getHost()).getAddress();
-			//search by previous connection
-			
-			for ( int i = 0 ; i < MAX_ENCOUNTERS; i++ ) {
-				
-				if ( this.encounters[i] != null && otherAddress == this.encounters[i].address ) {
-					//update encounter's time
-					this.encounters[i].time = mill;
-					return;
-				}
-				
-			}
-			
-			//add a new connection in FIFO mode
-			this.encounters[ ++counter % MAX_ENCOUNTERS ] = new LastEncounter(otherAddress, mill);
-			
+			long t = now.getTime();
+			int ad = con.getOtherNode(getHost()).getAddress();
+			LastEncounter l = new LastEncounter(ad, t);
+
+			int ret = addLastEncounteredHost(l);			
 		}
-		
 	}
+
+	private int addLastEncounteredHost(LastEncounter l)
+	{
+		int i = lastEncounteredHosts.indexOf(l); 
+		if(i == -1) // the host was never encountered 
+		{
+			if(lastEncounteredHosts.size() >= MAX_TABLE_SIZE)
+				lastEncounteredHosts.remove(0); // remove the older entry of table
+			
+			return lastEncounteredHosts.add(l) ? 1 : 0; // return 0 if l was not added	
+		}
+
+		// if the host was encountered and is in table the execution bypass to here
+		// As always remove a host to add other, is not necessary to verify the size 
+		// of the table, because i am replace a passed entry
+		lastEncounteredHosts.remove(i);
+		return lastEncounteredHosts.add(l) ? 2 : 0;
+	}
+
+	private long prevEncounterAge(int addr)
+	{
+		Date d = new Date();
+		for(int i = 0; i < lastEncounteredHosts.size(); i++)
+		{
+			if(lastEncounteredHosts.get(i).address == addr)
+				return d.getTime() - lastEncounteredHosts.get(i).time; 
+		}
+		return -1; 
+	}
+
+	/// to verify
 	
 	@Override
 	public void update() {
@@ -153,10 +167,10 @@ public class FRESHRouter extends ActiveRouter {
 		
 		int addressDestination = message.getTo().getAddress();
 		
-		for ( int i = 0 ; i < MAX_ENCOUNTERS; i++ ) {
+		for ( int i = 0 ; i < lastEncounteredHosts.size(); i++ ) {
 			
-			if ( this.encounters[i] != null && addressDestination == this.encounters[i].address ) {
-				return this.encounters[i].time;
+			if ( addressDestination == this.lastEncounteredHosts.get(i).address ) {
+				return this.lastEncounteredHosts.get(i).time;
 			}
 			
 		}

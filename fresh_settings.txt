@@ -3,11 +3,11 @@
 #
 
 ## Scenario settings
-Scenario.name = default_scenario
+Scenario.name = fresh_scenario
 Scenario.simulateConnections = true
-Scenario.updateInterval = 0.1
-# 43k ~= 12h
-Scenario.endTime = 43k
+Scenario.updateInterval = 100
+# 28k ~= 8h
+Scenario.endTime = 28k
 
 firstinterface.type = SimpleBroadcastInterface
 # transmit speed of 2 Mbps = 250kBps
