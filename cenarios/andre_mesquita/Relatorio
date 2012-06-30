@@ -1,0 +1,24 @@
+IME-USP
+BCC - MAC0463/5743 - Computação Móvel
+André Mesquita Pereira - NUSP 6879530
+
+
+::: EP2 :::
+
+
+- Padrão de Movimentação -
+
+A ideia básica era simular o Campus da USP nos momentos imediatamente posteriores ao fim do período de aulas, ou seja, um grande número de pessoas saindo de diversos lugares e se dirigindo a poucos determinados pontos.
+
+
+- Padrão de Comunicação -
+
+Partindo da premissa de que a rede USPNET alcança todo o campus, verificar se sua utilização como substitudo às redes de telefonia celular para comunicação pessoal no período de (suposto) maior uso seria viável.
+
+
+- Configuração -
+default_settings.txt - /
+roads.wkt - data/
+poi.wkt - data/
+
+

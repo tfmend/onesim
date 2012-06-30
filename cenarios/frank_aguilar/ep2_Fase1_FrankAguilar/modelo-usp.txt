@@ -1,0 +1,221 @@
+Scenario.name = modelo-usp
+Scenario.simulateConnections = true
+Scenario.updateInterval = 100
+# 43200s == 12h
+Scenario.endTime = 10800
+
+#Report.warmup = 200000
+Group.msgTtl = 1433
+
+Scenario.nrofHostGroups = 9
+
+# Common settings for all groups
+Group.movementModel = MapBasedMovement
+Group.router = EpidemicRouter
+Group.bufferSize = 100M
+# "Bluetooth" interface for all nodes
+btInterface.type = SimpleBroadcastInterface
+# Transmit speed of 2 Mbps = 250kBps
+btInterface.transmitSpeed = 250k
+btInterface.transmitRange = 10
+# All nodes have the bluetooth interface
+Group.nrofInterfaces = 1
+Group.interface1 = btInterface
+Group.transmitRange = 10
+# transmit speed of 2 Mbps = 250kBps
+Group.transmitSpeed = 100k
+Group.waitTime = 0, 0
+# walking speeds
+Group.speed = 0.5, 1.5
+
+
+Group.nrOfOffices = 50
+Group.workDayLength = 14400
+Group.probGoShoppingAfterWork = 0.0
+Group.nrOfMeetingSpots = 10
+
+Group.officeWaitTimeParetoCoeff = 0.5
+Group.officeMinWaitTime = 10
+Group.officeMaxWaitTime = 100000
+Group.officeSize = 100
+
+Group.nrofHosts = 0
+
+Group.timeDiffSTD = 7200
+Group.minGroupSize = 1
+Group.maxGroupSize = 3
+Group.minAfterShoppingStopTime = 3600
+Group.maxAfterShoppingStopTime = 7200
+
+######## CIRCULARES #################
+
+Group1.groupID = cone
+Group1.speed = 7, 10
+Group1.waitTime = 10, 30
+Group1.nrofHosts = 2
+Group1.movementModel = BusMovement
+Group1.routeFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/circular1.wkt
+Group1.routeType = 1
+Group1.busControlSystemNr = 1
+
+Group2.groupID = ctwo
+Group2.speed = 7, 10
+Group2.waitTime = 10, 30
+Group2.nrofHosts = 2
+Group2.movementModel = BusMovement
+Group2.routeFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/circular2.wkt
+Group2.routeType = 1
+Group2.busControlSystemNr = 2
+
+######### END OF CIRCULARES ########
+
+######## PEOPLE #################
+Group3.groupID = A
+Group3.waitTime = 0, 0 
+Group3.nrofHosts = 20
+Group3.movementModel = WorkingDayMovement
+Group3.busControlSystemNr = 1
+Group3.speed = 0.8, 1.4
+Group3.ownCarProb = 0.0
+Group3.shoppingControlSystemNr = 1
+Group3.meetingSpotsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/meetingspots.wkt
+Group3.officeLocationsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/rooms.wkt
+Group3.homeLocationsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/gates.wkt
+
+Group4.groupID = AA
+Group4.waitTime = 0, 0 
+Group4.nrofHosts = 20
+Group4.movementModel = WorkingDayMovement
+Group4.busControlSystemNr = 2
+Group4.speed = 0.8, 1.4
+Group4.ownCarProb = 0.0
+Group4.shoppingControlSystemNr = 2
+Group4.meetingSpotsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/meetingspots.wkt
+Group4.officeLocationsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/rooms.wkt
+Group4.homeLocationsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/gates.wkt
+
+Group5.groupID = B
+Group5.waitTime = 0, 0 
+Group5.nrofHosts = 20
+Group5.movementModel = WorkingDayMovement
+Group5.busControlSystemNr = 1
+Group5.speed = 0.8, 1.4
+Group5.ownCarProb = 0.8
+Group5.shoppingControlSystemNr = 1
+Group5.meetingSpotsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/meetingspots.wkt
+Group5.officeLocationsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/rooms.wkt
+Group5.homeLocationsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/main_gates.wkt
+
+Group6.groupID = BB
+Group6.waitTime = 0, 0 
+Group6.nrofHosts = 20
+Group6.movementModel = WorkingDayMovement
+Group6.busControlSystemNr = 2
+Group6.speed = 0.8, 1.4
+Group6.ownCarProb = 0.8
+Group6.shoppingControlSystemNr = 2
+Group6.meetingSpotsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/meetingspots.wkt
+Group6.officeLocationsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/rooms.wkt
+Group6.homeLocationsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/main_gates.wkt
+
+Group7.groupID = C
+Group7.waitTime = 0, 0 
+Group7.nrofHosts = 20
+Group7.movementModel = WorkingDayMovement
+Group7.busControlSystemNr = 1
+Group7.speed = 0.8, 1.4
+Group7.ownCarProb = 0.4
+Group7.shoppingControlSystemNr = 1
+Group7.meetingSpotsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/meetingspots.wkt
+Group7.officeLocationsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/rooms.wkt
+Group7.homeLocationsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/rooms.wkt
+
+Group8.groupID = CC
+Group8.waitTime = 0, 0 
+Group8.nrofHosts = 20
+Group8.movementModel = WorkingDayMovement
+Group8.busControlSystemNr = 2
+Group8.speed = 0.8, 1.4
+Group8.ownCarProb = 0.4
+Group8.shoppingControlSystemNr = 2
+Group8.meetingSpotsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/meetingspots.wkt
+Group8.officeLocationsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/rooms.wkt
+Group8.homeLocationsFile = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/rooms.wkt
+
+Group9.groupID = D
+Group9.movementModel = ShortestPathMapBasedMovement
+Group9.waitTime = 100, 300
+Group9.speed = 7, 10
+Group9.nrofHosts = 10
+
+######### END OF PEOPLE ########
+
+## Message creation parameters
+# How many event generators
+#Events.nrof = 1
+# Class of the first event generator
+#Events1.class = MessageEventGenerator
+# (following settings are specific for the MessageEventGenerator class)
+# Creation interval in seconds (one new message every 25 to 35 seconds)
+#Events1.interval = 25,35
+# Message sizes (500kB - 1MB)
+#Events1.size = 500k,1M
+# range of message source/destination addresses
+#Events1.hosts = 0,3
+# Message ID prefix
+#Events1.prefix = M
+
+Events.nrof = 1
+# max number of external events to preload (default = 500) 
+ExternalEvents.nrofPreload = 500
+# path to external events file
+ExternalEvents.filePath = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/events-usp.txt
+
+
+# seed for movement models' pseudo random number generator (default = 0)
+MovementModel.rngSeed = [2; 8372; 98092; 18293; 777]
+
+# World's size for Movement Models without implicit size (width, height; meters)
+MovementModel.worldSize = 8000, 8000
+# How long time to move hosts in the world before real simulation
+#MovementModel.warmup = 43000
+
+## Map based movement -movement model specific settings
+MapBasedMovement.nrofMapFiles = 1
+
+MapBasedMovement.mapFile1 = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/roads.wkt
+
+## Reports - all report names have to be valid report classes
+# how many reports to load
+Report.nrofReports = 2
+Report.reportDir = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/reports/modelo-usp
+# Report classes to load
+Report.report1 = MessageStatsReport
+Report.report2 = ConnectivityONEReport
+
+
+## Default settings for some routers settings
+ProphetRouter.secondsInTimeUnit = 30
+SprayAndWaitRouter.nrofCopies = 6
+SprayAndWaitRouter.binaryMode = true
+
+
+## Optimization settings -- these affect the speed of the simulation
+## see World class for details.
+Optimization.connectionAlg = 2
+Optimization.cellSizeMult = 5
+Optimization.randomizeUpdateOrder = true
+
+## GUI settings
+
+# GUI underlay image settings
+GUI.UnderlayImage.fileName = cenarios/frank_aguilar/ep2_Fase1_FrankAguilar/usp/mapa_usp.png
+# Image offset in pixels (x, y)
+GUI.UnderlayImage.offset = -110, 5
+# Scaling factor for the image
+GUI.UnderlayImage.scale = 10.0
+# Image rotation (radians)
+GUI.UnderlayImage.rotate = -0.015
+
+# how many events to show in the log panel (default = 30)
+GUI.EventLogPanel.nrofEvents = 200

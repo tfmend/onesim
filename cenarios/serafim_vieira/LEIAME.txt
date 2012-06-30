@@ -1,0 +1,28 @@
+Esse arquivo contém todo o necessário para rodar a nossa simulação no TheONE.
+
+Em particular:
+
+ - default_settings.txt: Arquivo de configuração, escolhemos sobreescrever esse arquivo para tornar
+ o processo de rodar a simulação trivial, já que nada do arquivo default original nos ajudaria muito.
+
+ - arquivos de mensagens: Os arquivos txt de nome broadCircular1, broadCircular2, broadStudents e students
+ definem mensagens no nosso padrão.
+
+ - arquivos wkt de mapas e POIs: Usamos 8 arquivos do tipo wkt para definir os mapas e pontos de interesse,
+ o nome de todos eles começa por "USP".
+
+ - RelatorioEp2Pt1.pdf: O relatório explicando qual o ambiente que tentamos reproduzir na simulação.
+
+ - Pasta reports: Nessa pasta estão os relatórios gerados para tempos de simulação diferentes, 
+ desde 10 até 30 mil segundos.
+
+ - Pasta Ep2OpenJUMPfiles: Nessa pasta está o projeto do OpenJUMP que usamos para gerar todos os .wkt.
+
+ **** Para rodar a simulação assumimos que todos os arquivos de mensagens e todos os .wkt estão na 
+ pasta data/ em uma instalação padrão do TheONE. O default_settings substitui o que vem na instalação.
+
+
+ EP2 - Computação Móvel
+Guilherme Fernandes Otranto
+Jefferson Serafim Ascaneo
+Renato Augusto Vieira Nishimori

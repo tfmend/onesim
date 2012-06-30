@@ -1,0 +1,15 @@
+EP2 - Computação Móvel – MAC5743/MAC0463
+Almir Alves Pereira
+Everton Topan Silva
+
+Os padrões de movimentação e comunicação foram baseados no comportamento deplorável dos torcedores do Corinthians
+devido a vitória de seu time contra o Palmeiras.
+Na simulação temos torcedores de ambos os times passeando pelos arredores do Estádio do Pacaembu.
+Devido a vitória os corinthianos comportam-se de forma selvagem, correndo pelas ruas em alta velocidade e enviando
+muitas mensagens num curto intervalo de tempo, tais mensagens têm como conteúdo muitas palavras impróprias para um
+trabalho acadêmico e assim serão omitidas.
+Em contrapartida os torcedores palmerenses comportam-se de forma civilizada, andando lentamente e enviando poucas
+mensagens.
+
+Para rodar a simulação é necessário usar o arquivo one.sh entregue junto com o EP
+Não conseguimos usar o dtn trace, em todas as vezes aparecia a mensagem "This operation takes some time. Please wait" e não saia disso, então estamos mandando o report no arquivo "corinthians_campeao_ConnectivityONEReport.txt" 
