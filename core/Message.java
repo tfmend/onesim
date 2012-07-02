@@ -1,6 +1,10 @@
-/* 
- * Copyright 2010 Aalto University, ComNet
- * Released under GPLv3. See LICENSE.txt for details. 
+/*
+ * 
+ * University of São Paulo
+ * 
+ * jteodoro at ime.usp.br
+ * thiagofurtado17 at gmail.com
+ * 
  */
 package core;
 
@@ -48,6 +52,14 @@ public class Message implements Comparable<Message> {
 	
 	/** Application ID of the application that created the message */
 	private String	appID;
+	
+	/*memories of positions*/
+	public static int initialHopsToSearch = 10;
+	public long memoryTime = -1;
+	public int hopsToSearch = initialHopsToSearch;
+	public Coord destinationCoord = null;
+	public Coord lastHopCoord = null;
+	public boolean floodAgain = true;
 	
 	static {
 		reset();
@@ -262,6 +274,12 @@ public class Message implements Comparable<Message> {
 		this.requestMsg  = m.requestMsg;
 		this.initTtl = m.initTtl;
 		this.appID = m.appID;
+		
+		/*memories of positions*/
+		this.hopsToSearch = m.hopsToSearch;
+		this.destinationCoord = m.destinationCoord;
+		this.lastHopCoord = m.lastHopCoord;
+		this.memoryTime = m.memoryTime;
 		
 		if (m.properties != null) {
 			Set<String> keys = m.properties.keySet();
