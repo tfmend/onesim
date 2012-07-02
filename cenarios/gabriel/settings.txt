@@ -1,7 +1,7 @@
 Scenario.name = Parking
 Scenario.simulateConnections = true
 #Scenario.updateInterval = 0.1
-Scenario.updateInterval = 100
+Scenario.updateInterval = 10
 # 43k ~= 12h
 #Scenario.endTime = 100k
 Scenario.endTime = 43k
@@ -17,7 +17,8 @@ btInterface.transmitSpeed = 250k
 btInterface.transmitRange = 20
 
 Group.movementModel = StationaryMovement
-Group.router = EpidemicRouter
+#Group.router = EpidemicRouter
+Group.router = FRESHRouter
 Group.bufferSize = 5M
 Group.type = SimpleBroadcastInterface
 Group.nrofInterfaces = 1

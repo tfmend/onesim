@@ -1,0 +1,266 @@
+#
+# Settings for the simulation of EP2
+#
+
+#################################################
+#         Namespace Scenario settings           #
+#################################################
+
+Scenario.name = ep2_workingDayScenario
+Scenario.simulateConnections = true
+Scenario.updateInterval = 10
+# 43k ~= 12h
+#Scenario.endTime = 172k
+# To upload report 28k ~= 8h
+Scenario.endTime = 28k
+Scenario.nrofHostGroups = 8
+
+#################################################
+#          Network Interface settings           #
+#################################################
+
+# A Bluetooh interface v3.0 for people devices
+person.type = SimpleBroadcastInterface
+# 24 Mbps = 6MBps = 6000kBps
+person.transmitSpeed = 6000k
+person.transmitRange = 100
+
+# Wifi 802.11g
+person1.type = SimpleBroadcastInterface
+person1.transmitSpeed = 6.75M
+person1.transmitRange = 500
+
+# Wifi 802.11g
+car.type = SimpleBroadcastInterface
+car.transmitSpeed = 6.75M
+car.transmitRange = 500
+
+# A High Speed interface for bus devices
+bus.type = SimpleBroadcastInterface
+bus.transmitSpeed = 12.5M
+bus.transmitRange = 1000
+
+#################################################
+#           Groups Behavior settings            #
+#################################################
+
+
+Group.movementModel = MapBasedMovement
+#Group.router = EpidemicRouter
+#Group.router = ProphetRouter
+Group.router = FRESHRouter
+Group.bufferSize = 5M
+Group.waitTime = 0, 120
+Group.nrofInterfaces = 2
+Group.interface1 = person
+Group.speed = 0.5, 1.5
+Group.msgTtl = 60
+
+Group.workDayLength = 43200
+Group.probGoShoppingAfterWork = 0.5
+
+Group.officeWaitTimeParetoCoeff = 0.5
+Group.officeMinWaitTime = 10
+Group.officeMaxWaitTime = 100000
+Group.officeSize = 100
+
+Group.timeDiffSTD = 7200
+Group.minGroupSize = 1
+Group.maxGroupSize = 8
+Group.minAfterShoppingStopTime = 3600
+Group.maxAfterShoppingStopTime = 7200
+
+Group.nrOfOffices = 494
+Group.nrOfMeetingSpots = 331
+
+MapBasedMovement.nrofMapFiles = 4
+MapBasedMovement.performChecks = true
+MapBasedMovement.mapFile1 = cenarios/thiago_jose/data/mapa.wkt
+MapBasedMovement.mapFile2 = cenarios/thiago_jose/data/rodovias.wkt
+MapBasedMovement.mapFile3 = cenarios/thiago_jose/data/americana.wkt
+MapBasedMovement.mapFile4 = cenarios/thiago_jose/data/stabarbara.wkt
+
+#################################################
+#        Group of people      #
+#################################################
+
+Group1.groupID = p-
+Group1.bufferSize = 500M
+Group1.waitTime = 10, 30 
+Group1.speed = 0.8, 1.4
+Group1.nrofHosts = 100
+Group1.movementModel = WorkingDayMovement
+Group1.okMaps = 1
+Group1.busControlSystemNr = 1
+Group1.ownCarProb = 0.7
+Group1.shoppingControlSystemNr = 1
+Group1.meetingSpotsFile = cenarios/thiago_jose/data/meeting-spots.wkt
+Group1.officeLocationsFile = cenarios/thiago_jose/data/offices.wkt
+Group1.homeLocationsFile = cenarios/thiago_jose/data/homes.wkt
+Group1.nrofInterfaces = 2
+Group1.interface1 = person
+Group1.interface2 = person1
+
+Group7.groupID = pa-
+Group7.bufferSize = 500M
+Group7.waitTime = 10, 30 
+Group7.speed = 0.8, 1.4
+Group7.nrofHosts = 150
+Group7.movementModel = WorkingDayMovement
+Group7.okMaps = 3
+Group7.busControlSystemNr = 1
+Group7.ownCarProb = 0.5
+Group7.shoppingControlSystemNr = 1
+Group7.meetingSpotsFile = cenarios/thiago_jose/data/americana-meeting-spots.wkt
+Group7.officeLocationsFile = cenarios/thiago_jose/data/americana-offices.wkt
+Group7.homeLocationsFile = cenarios/thiago_jose/data/americana-homes.wkt
+Group7.nrofInterfaces = 2
+Group7.interface1 = person
+Group7.interface2 = person1
+
+Group8.groupID = pb-
+Group8.bufferSize = 500M
+Group8.waitTime = 10, 30 
+Group8.speed = 0.8, 1.4
+Group8.nrofHosts = 150
+Group8.movementModel = WorkingDayMovement
+Group8.okMaps = 4
+Group8.busControlSystemNr = 1
+Group8.ownCarProb = 0.5
+Group8.shoppingControlSystemNr = 1
+Group8.meetingSpotsFile = cenarios/thiago_jose/data/stabarbara-meeting-spots.wkt
+Group8.officeLocationsFile = cenarios/thiago_jose/data/stabarbara-offices.wkt
+Group8.homeLocationsFile = cenarios/thiago_jose/data/stabarbara-homes.wkt
+Group8.nrofInterfaces = 2
+Group8.interface1 = person
+Group8.interface2 = person1
+
+#################################################
+#        Group of cars    #
+#################################################
+
+Group2.groupID = c-
+Group2.movementModel = CarMovement
+Group2.bufferSize = 1000M
+Group2.nrofHosts = 200
+Group2.routeType = 2
+Group2.speed = 2, 4
+Group2.interface1 = car
+Group2.routeFile = cenarios/thiago_jose/data/mapa.wkt
+Group2.interface2 = person1
+
+Group6.groupID = ca-
+Group6.movementModel = CarMovement
+Group6.bufferSize = 1000M
+Group6.nrofHosts = 100
+Group6.routeType = 2
+Group6.speed = 2, 4
+Group6.interface1 = car
+Group6.routeFile = cenarios/thiago_jose/data/rodovias.wkt
+Group6.interface2 = person1
+
+#################################################
+#         Group of bus         #
+#################################################
+
+Group3.groupID = i-
+Group3.bufferSize = 2000M
+Group3.speed = 7, 10
+Group3.waitTime = 10, 30
+Group3.nrofHosts = 10
+Group3.movementModel = BusMovement
+Group3.routeFile = cenarios/thiago_jose/data/rodovias.wkt
+Group3.routeType = 2
+Group3.busControlSystemNr = 1
+Group3.interface1 = bus
+Group3.interface2 = person1
+
+Group4.groupID = A-
+Group4.bufferSize = 2000M
+Group4.speed = 3, 7
+Group4.waitTime = 10, 30
+Group4.nrofHosts = 30
+Group4.movementModel = BusMovement
+Group4.routeFile = cenarios/thiago_jose/data/americana-bus1.wkt
+Group4.routeType = 2
+Group4.busControlSystemNr = 1
+Group4.interface1 = bus
+Group4.interface2 = person1
+
+Group5.groupID = S-
+Group5.bufferSize = 2000M
+Group5.speed = 3, 7
+Group5.waitTime = 10, 30
+Group5.nrofHosts = 35
+Group5.movementModel = BusMovement
+Group5.routeFile = cenarios/thiago_jose/data/stabarbara-bus1.wkt
+Group5.routeType = 2
+Group5.busControlSystemNr = 1
+Group5.interface1 = bus
+Group5.interface2 = person1
+
+## Default settings for some routers settings
+ProphetRouter.secondsInTimeUnit = 30
+SprayAndWaitRouter.nrofCopies = 6
+SprayAndWaitRouter.binaryMode = true
+
+## Optimization settings -- these affect the speed of the simulation
+## see World class for details.
+Optimization.connectionAlg = 2
+Optimization.cellSizeMult = 5
+Optimization.randomizeUpdateOrder = true
+
+## Message creation parameters 
+# How many event generators
+Events.nrof = 1
+# Class of the first event generator
+Events1.class = MessageEventGenerator
+# (following settings are specific for the MessageEventGenerator class)
+# Creation interval in seconds (one new message every 25 to 35 seconds)
+Events1.interval = 5,10
+# Message sizes (50kB - 150kB)
+Events1.size = 50k,150k
+# range of message source/destination addresses
+Events1.hosts = 0,774
+# Message ID prefix
+Events1.prefix = M
+
+## Movement model settings
+# seed for movement models' pseudo random number generator (default = 0)
+MovementModel.rngSeed = 1
+
+# World's size for Movement Models without implicit size (width, height; meters)
+MovementModel.worldSize = 28000, 13000
+
+# How long time to move hosts in the world before real simulation
+MovementModel.warmup = 100
+
+# how many reports to load
+Report.nrofReports = 14
+
+# Report classes to load
+Report.report1 = InterContactTimesReport
+Report.report2 = ContactTimesReport
+Report.report3 = UniqueEncountersReport
+Report.report4 = TotalEncountersReport
+Report.report5 = EncountersVSUniqueEncountersReport
+Report.report6 = ContactsDuringAnICTReport
+Report.report7 = MessageStatsReport
+Report.report8 = ContactsPerHourReport
+Report.report9 = AdjacencyGraphvizReport
+Report.report10 = ConnectivityDtnsim2Report
+Report.report11 = ConnectivityONEReport
+Report.report12 = DistanceDelayReport
+Report.report13 = MessageGraphvizReport
+Report.report14 = MessageLocationReport
+MessageLocationReport.granularity = 1
+MessageLocationReport.messages = 1
+
+# length of the warm up period (simulated seconds)
+Report.warmup = 0
+
+# default directory of reports (can be overridden per Report with output setting)
+Report.reportDir = cenarios/thiago_jose/reports/
+
+# how many events to show in the log panel (default = 30)
+GUI.EventLogPanel.nrofEvents = 20

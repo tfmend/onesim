@@ -1,0 +1,20 @@
+Message stats for scenario corinthians_campeao
+sim_time: 3600.0000
+created: 633
+started: 642
+relayed: 609
+aborted: 33
+dropped: 0
+removed: 904
+delivered: 2
+delivery_prob: 0.0032
+response_prob: 0.0000
+overhead_ratio: 303.5000
+latency_avg: 1930.5000
+latency_med: 2530.0000
+hopcount_avg: 1.5000
+hopcount_med: 2
+buffertime_avg: 438.0243
+buffertime_med: 115.0000
+rtt_avg: NaN
+rtt_med: NaN

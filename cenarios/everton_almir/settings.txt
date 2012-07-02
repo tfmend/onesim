@@ -1,0 +1,53 @@
+Scenario.name = corinthians_campeao
+Scenario.simulateConnections = true
+Scenario.updateInterval = 10
+Scenario.endTime = 3600
+
+# Gerador de mensagens para os palmerenses
+Events.nrof = 2
+Events1.class = MessageEventGenerator
+Events1.interval = 25,35
+Events1.size = 1k,3k
+Events1.hosts = 0,399
+Events1.prefix = P
+
+
+# Gerador de mensagens para os corinthianos
+Events2.class = MessageEventGenerator
+Events2.interval = 5, 10
+Events2.size = 10k,15k
+Events2.hosts = 400,999
+Events2.prefix = C
+
+# Configuração para carregar o mapa
+MapBasedMovement.nrofMapFiles = 1
+MapBasedMovement.mapFile1 = cenarios/everton_almir/map-pacaembu.osm.wkt
+MovementModel.worldSize = 25000, 25000
+
+Scenario.nrofHostGroups = 2
+
+# Grupo 1 - Palmerenses que perderam o jogo
+# Andam mais lentamente e se comunicam com menos frequência
+Group.nrofHosts = 400
+Group.router = FRESHRouter
+Group1.groupID = palmerense
+Group1.okMaps = 1
+Group1.movementModel = MapBasedMovement
+Group1.speed = 0.5, 1.5
+
+
+# Grupo 2 - Corinthianos enlouquecidos devido a vitória
+# Correm pelo mapa enviando varias mensagens, falando palavrões e atacando pessoas na rua.
+# Infelizmente o simulador não dá suporte aos ultimos dois itens que, com grande pezar, serão omitidos.
+Group2.nrofHosts = 600
+Group2.groupID = corinthiano
+Group2.okMaps = 1
+Group2.movementModel = MapBasedMovement
+Group2.speed = 4.0, 7.0
+
+# Report para o servidor dtns
+Report.nrofReports = 2
+Report.warmup = 0
+Report.reportDir = cenarios/everton_almir/reports/
+Report.report1 = ConnectivityONEReport
+Report.report2 = MessageStatsReport
