@@ -1,8 +1,7 @@
-Nesta pasta encontra-se
 
-	- uma pasta com os dois algoritmos de roteamento implementados. Basta copiar a pasta routing para a subpasta routing do TheONE e recompilar com o script compile.bat do TheONE.
-		- para uso do MOPRouter é necessário setar a variável sizeOfMemoriesTable. Pode ser setado como Group.sizeOfMemoriesTable=140.
+O código do TheONE com os algoritmos de roteamento implementados podem ser clonados a partir de git@github.com:tfmend/onesim.git
 
-	- uma pasta com os reports gerados dos 9 trabalhos que foram feitos simulação.
-
-	- um documento relatando o EP
+$ git clone git@github.com:tfmend/onesim.git onesim
+$ cd one sim
+$ sh compile.bat ## no linux
+$ ./one.sh <settings_file>
