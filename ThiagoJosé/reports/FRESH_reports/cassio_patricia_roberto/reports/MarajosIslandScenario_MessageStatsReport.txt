@@ -1,0 +1,20 @@
+Message stats for scenario MarajosIslandScenario
+sim_time: 432000.0000
+created: 1354
+started: 21833
+relayed: 21831
+aborted: 2
+dropped: 21835
+removed: 0
+delivered: 373
+delivery_prob: 0.2755
+response_prob: 0.0000
+overhead_ratio: 57.5282
+latency_avg: 33833.2922
+latency_med: 29723.0000
+hopcount_avg: 2.1635
+hopcount_med: 2
+buffertime_avg: 14975.5416
+buffertime_med: 4650.0000
+rtt_avg: NaN
+rtt_med: NaN

@@ -1,0 +1,20 @@
+Message stats for scenario modelo-usp
+sim_time: 10800.0000
+created: 366
+started: 1636
+relayed: 1627
+aborted: 9
+dropped: 0
+removed: 1846
+delivered: 7
+delivery_prob: 0.0191
+response_prob: 0.0000
+overhead_ratio: 231.4286
+latency_avg: 961.4286
+latency_med: 37.0000
+hopcount_avg: 1.8571
+hopcount_med: 1
+buffertime_avg: 195.8380
+buffertime_med: 2.0000
+rtt_avg: NaN
+rtt_med: NaN

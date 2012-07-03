@@ -1,0 +1,20 @@
+Message stats for scenario Damian-Guilherme
+sim_time: 86400.0000
+created: 4932
+started: 12485
+relayed: 12482
+aborted: 3
+dropped: 16089
+removed: 0
+delivered: 657
+delivery_prob: 0.1332
+response_prob: 0.0000
+overhead_ratio: 17.9985
+latency_avg: 1114.9680
+latency_med: 764.0000
+hopcount_avg: 1.5145
+hopcount_med: 1
+buffertime_avg: 3416.7578
+buffertime_med: 3560.0000
+rtt_avg: NaN
+rtt_med: NaN
