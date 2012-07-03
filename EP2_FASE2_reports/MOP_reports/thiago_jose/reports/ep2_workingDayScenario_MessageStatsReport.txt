@@ -1,0 +1,20 @@
+Message stats for scenario ep2_workingDayScenario
+sim_time: 28000.0000
+created: 3987
+started: 938139
+relayed: 936046
+aborted: 2000
+dropped: 823395
+removed: 0
+delivered: 2019
+delivery_prob: 0.5064
+response_prob: 0.0000
+overhead_ratio: 462.6186
+latency_avg: 712.7697
+latency_med: 47.0000
+hopcount_avg: 5.4061
+hopcount_med: 5
+buffertime_avg: 3540.5168
+buffertime_med: 3541.0000
+rtt_avg: NaN
+rtt_med: NaN
