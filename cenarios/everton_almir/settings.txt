@@ -1,6 +1,6 @@
 Scenario.name = corinthians_campeao
 Scenario.simulateConnections = true
-Scenario.updateInterval = 10
+Scenario.updateInterval = 100
 Scenario.endTime = 3600
 
 # Gerador de mensagens para os palmerenses
@@ -29,7 +29,10 @@ Scenario.nrofHostGroups = 2
 # Grupo 1 - Palmerenses que perderam o jogo
 # Andam mais lentamente e se comunicam com menos frequência
 Group.nrofHosts = 400
-Group.router = FRESHRouter
+#Group.router = FRESHRouter
+Group.router = MaxPropRouter
+#Group.router = MOPRouter
+#Group.sizeOfMemoriesTable=140
 Group1.groupID = palmerense
 Group1.okMaps = 1
 Group1.movementModel = MapBasedMovement

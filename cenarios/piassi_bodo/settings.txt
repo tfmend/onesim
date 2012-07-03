@@ -1,7 +1,7 @@
 # SCENARIO SETTINGS
 Scenario.name = ep2
 Scenario.simulateConnections = true
-Scenario.updateInterval = 10
+Scenario.updateInterval = 100
 Scenario.endTime = 7200
 Scenario.nrofHostGroups = 1
 
@@ -22,7 +22,10 @@ Group.interface1 = Interface
 
 Group.bufferSize = 5M
 #Group.router = DirectDeliveryRouter
-Group.router = FRESHRouter
+#Group.router = FRESHRouter
+Group.router = MaxPropRouter
+#Group.router = MOPRouter
+#Group.sizeOfMemoriesTable=140
 
 Group1.groupID = a
 Group1.nrofHosts = 500
